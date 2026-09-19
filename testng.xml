@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Suite">
+
+    <test name="Test">
+
+        <listeners>
+            <listener class-name="base.Listeners"/>
+        </listeners>
+
+        <classes>
+            <class name="test.VerifyEndToEndBookingFlow"/>
+            <class name="test.ErrorValidationTest"/>
+        </classes>
+
+    </test>
+
+</suite>

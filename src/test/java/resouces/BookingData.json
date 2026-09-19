@@ -1,0 +1,49 @@
+[
+  {
+    "currency": "MYR",
+    "language": "Bahasa Malaysia",
+    "destination": "Yas Island",
+	"checkIn": "2027-01-12",
+	"checkOut": "2027-01-17",
+    "adults": "3",
+    "children": "1",
+    "rooms": "2",
+    "hotel": "W Abu Dhabi - Yas Island",
+	
+	"firstName": "Test",
+	"lastName": "User",
+	"email": "test@example.com",
+	"address": "Test Address",
+	"city": "Kuala Lumpur",
+	"country": "my",
+	"phoneNo": "123456789",
+
+	 "flight": true,
+	 "carRental": true,
+	 "taxi": true
+  },
+  
+  {
+    "currency": "INR",
+    "language": "English (US)",
+    "destination": "Auckland",
+  "checkIn": "2026-11-10",
+  "checkOut": "2026-11-14",
+    "adults": "3",
+    "children": "1",
+    "rooms": "2",
+    "hotel": "Novotel Auckland Airport",
+
+  "firstName": "Test",
+  "lastName": "User",
+  "email": "test@example.com",
+  "address": "Test Address",
+  "city": "Bangalore",
+  "country": "IN",
+  "phoneNo": "91288910",
+
+   "flight": true,
+   "carRental": true,
+   "taxi": true
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "English": {
+	"Price": "Price",
+    "VAT": "VAT",
+    "Service Charge": "Service charge",
+    "Municipality Fee": "Municipality fee",
+    "Destination Tax": "Destination tax"
+  },
+  "Bahasa Malaysia": {
+	"Price": "Harga",
+    "VAT": "VAT",
+    "Service Charge": "Caj perkhidmatan",
+    "Municipality Fee": "Caj perbandaran",
+    "Destination Tax": "Cukai destinasi"
+  }
+}
