@@ -5,99 +5,78 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import base.WebUtilities;
 
-public class BookingLandingPage extends WebUtilities{
-	
-	WebDriver driver;
-	private By dismissPopup = By.cssSelector("button[aria-label='Dismiss sign-in info.']");
-	private By currencyButton = By.xpath("//button[@data-testid='header-currency-picker-trigger']");
-	private By languageButton = By.xpath("//button[@data-testid='header-language-picker-trigger']");
+public class BookingLandingPage extends WebUtilities {
 
-	public BookingLandingPage(WebDriver driver) {
-		super(driver);
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
-	}
-	
-	
-	public void dismissPopUp() {
+    WebDriver driver;
 
-	    
-	   WebElement dismiss = waitForElementToBeClickable(dismissPopup);
-	   dismiss.click();
-	    
-	    		
-	
-	}
-	
-	
-	
-	
-	
-	public void selectCurrency(String currency) {
-		
-       WebElement currButton = waitForElementToBeClickable(currencyButton);
-       
-       currButton.click();
+    private By dismissPopup = By.cssSelector("button[aria-label='Dismiss sign-in info.']");
+    private By currencyButton = By.xpath("//button[@data-testid='header-currency-picker-trigger']");
+    private By languageButton = By.xpath("//button[@data-testid='header-language-picker-trigger']");
 
-		
-       By currencyOption = By.xpath("//button[@data-testid='selection-item']//div[text()='" + currency + "']");
-	   WebElement optionCurrency = waitForElementToBeClickable(currencyOption);		
-	   optionCurrency.click();
-		    		
-		   
+    public BookingLandingPage(WebDriver driver) {
+        super(driver);
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
-	   
-		}
-	
-	public void selectLanguage(String language) {
+    public void dismissPopUp() {
 
-	    WebElement lanButton = waitForElementToBeClickable(languageButton);
-	    lanButton.click();
+        WebElement dismiss = waitForElementToBeClickable(dismissPopup);
+        dismiss.click();
+    }
 
-	    System.out.println("Language dropdown opened. Looking for: " + language);
+    public void selectCurrency(String currency) {
 
-	    // Check what language options are currently present
-	    List<WebElement> languageOptions =
-	            driver.findElements(By.cssSelector("button[data-testid='selection-item']"));
+        WebElement currButton = waitForElementToBeClickable(currencyButton);
 
-	    System.out.println("Immediately after click - options found: "
-	            + languageOptions.size());
+        currButton.click();
 
-	    for (WebElement option : languageOptions) {
-	        System.out.println("Option text: [" + option.getText() + "]");
-	    }
+        By currencyOption = By.xpath(
+                "//button[@data-testid='selection-item']//div[text()='" + currency + "']"
+        );
 
-	    By languageOption = By.xpath(
-	            "//button[@data-testid='selection-item'][contains(normalize-space(.),'"
-	                    + language + "')]"
-	    );
+        WebElement optionCurrency = waitForElementToBeClickable(currencyOption);
+        optionCurrency.click();
+    }
 
-	    WebElement langOption = waitForElementToBeClickable(languageOption);
-	    langOption.click();
+    public void selectLanguage(String language) {
 
-	    System.out.println("Language button clicked.");
-	}
+        WebElement lanButton = waitForElementToBeClickable(languageButton);
 
-	
-	
-	public HomeScreenPage initializeHomePage(String currency, String language) {
-	    dismissPopUp();
-	    selectCurrency(currency);
-	    selectLanguage(language);
-	    return new HomeScreenPage(driver);
-		
-		
-	}
-	
-	
-	
-	
-	
-	
+        lanButton.click();
 
+        System.out.println("Language dropdown opened. Looking for: " + language);
+
+        List<WebElement> languageOptions =
+                driver.findElements(By.xpath("//button[@data-testid='selection-item']"));
+
+        System.out.println("Number of language/currency options found: " + languageOptions.size());
+
+        for (WebElement option : languageOptions) {
+            System.out.println("OPTION TEXT: [" + option.getText() + "]");
+        }
+
+        By languageOption = By.xpath(
+                "//button[@data-testid='selection-item'][contains(normalize-space(.),'"
+                        + language + "')]"
+        );
+
+        WebElement langOption = waitForElementToBeClickable(languageOption);
+
+        langOption.click();
+
+        System.out.println("Language button clicked.");
+    }
+    public HomeScreenPage initializeHomePage(String currency, String language) {
+
+        dismissPopUp();
+        selectCurrency(currency);
+        selectLanguage(language);
+
+        return new HomeScreenPage(driver);
+    }
 }

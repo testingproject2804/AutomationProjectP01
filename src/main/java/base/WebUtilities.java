@@ -113,6 +113,10 @@ public class WebUtilities {
 	public void waitUntilOptionsLoaded(WebElement dropdown) {
 	    wait.until(driver -> new Select(dropdown).getOptions().size() > 1);
 	}
+
+	public void waitUntilLanguageOptionLoaded(By locator) {
+	    wait.until(driver -> !driver.findElements(locator).isEmpty());
+	}
 	
 	public WebElement waitForPresenceOfElement(By locator) {
 		

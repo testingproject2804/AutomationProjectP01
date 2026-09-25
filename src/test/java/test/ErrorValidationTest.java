@@ -19,8 +19,8 @@ import org.testng.annotations.Listeners;
 public class ErrorValidationTest extends BaseTest{
 
 	
-	@Test(timeOut = 120000 ,dataProvider = "getDestinationData",groups = "Booking", description = "Verify error validation related to destination")
-	public void errorValidation(HashMap<String,String> data) throws IOException  {
+	@Test(timeOut = 125000 ,dataProvider = "getDestinationData",groups = "Booking", description = "Verify error validation related to destination")
+	public void verifyMissingDestination(HashMap<String,String> data) throws IOException  {
 		
 		HomeScreenPage homePage = landingPage.initializeHomePage(data.get("currency"), data.get("language"));
 		homePage.clickSearchBtn();

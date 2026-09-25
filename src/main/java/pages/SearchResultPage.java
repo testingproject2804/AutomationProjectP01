@@ -36,8 +36,11 @@ public class SearchResultPage extends WebUtilities {
 	@FindBy(tagName ="h1")
 	WebElement heading;
 	
-    private By closeMapBy =
-            By.xpath("//div[@data-testid='map-overlay-container']/button");
+	private By closeMapBy =
+	        By.xpath("//div[@data-testid='map-overlay-container']/button");
+    
+    private By mapOverlay =
+            By.xpath("//div[@data-testid='map-overlay-container']");
 
     public boolean isResultDisplayed(String destination) {
 
@@ -46,13 +49,13 @@ public class SearchResultPage extends WebUtilities {
         return waitForTextToBePresent(headingLocator, destination);
     }
 	
-	public void closeMap() {
-	    if (!driver.findElements(closeMapBy).isEmpty()) {
-	        WebElement closeMap = waitForElementToBeClickable(closeMapBy);
-	        closeMap.click();
-	        waitForInvisibilityOfElement(closeMapBy);
-	    }
-	}
+    public void closeMap() {
+        if (!driver.findElements(closeMapBy).isEmpty()) {
+            WebElement closeMap = waitForElementToBeClickable(closeMapBy);
+            closeMap.click();
+            waitForInvisibilityOfElement(mapOverlay);
+        }
+    }
 	
 
 	
@@ -78,17 +81,34 @@ public class SearchResultPage extends WebUtilities {
 
 	public HotelDetailsPage clickHotelTitle(String hotelName) {
 
-	    By hotelLocator = By.xpath(
-	        "//div[@data-testid='title' and normalize-space()='" + hotelName + "']"
-	    );
-
+		By hotelLocator = By.xpath(
+			    "//div[@data-testid='title'][contains(normalize-space(),'" + hotelName + "')]"
+			);
+		
 	    String currentWindow = driver.getWindowHandle();
 
 	    for (int attempt = 1; attempt <= 3; attempt++) {
 
 	        try {
+	        	
+	        	System.out.println("Hotel name requested: " + hotelName);
+
+	        	List<WebElement> hotelTitles =
+	        	        driver.findElements(By.xpath("//*[contains(@data-testid,'title')]"));
+
+	        	System.out.println("Elements with data-testid containing 'title': "
+	        	        + hotelTitles.size());
+
+	        	for (WebElement element : hotelTitles) {
+	        	    System.out.println(
+	        	        "data-testid=" + element.getAttribute("data-testid")
+	        	        + " | text=" + element.getText()
+	        	    );
+	        	}
 
 	            WebElement hotel = waitForElementToBeClickable(hotelLocator);
+	            
+	            
 
 	            try {
 
