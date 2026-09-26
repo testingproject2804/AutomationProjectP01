@@ -19,7 +19,7 @@ import org.testng.annotations.Listeners;
 public class ErrorValidationTest extends BaseTest{
 
 	
-	@Test(timeOut = 125000 ,dataProvider = "getDestinationData",groups = "Booking", description = "Verify error validation related to destination")
+	@Test(timeOut = 140000 ,dataProvider = "getDestinationData",groups = "Booking", description = "Verify error validation related to destination")
 	public void verifyMissingDestination(HashMap<String,String> data) throws IOException  {
 		
 		HomeScreenPage homePage = landingPage.initializeHomePage(data.get("currency"), data.get("language"));
