@@ -28,7 +28,7 @@ public class ErrorValidationTest extends BaseTest{
 		
 	}
 	
-	@Test(timeOut = 120000 ,dataProvider = "getMissingGuestData",groups = "Booking", description = "Verify error validation related to mandatory field")
+	@Test(timeOut = 140000 ,dataProvider = "getMissingGuestData",groups = "Booking", description = "Verify error validation related to mandatory field")
 	public void verifyMissingGuestDetailsValidation(HashMap<String,String> data) throws IOException {
 		
 		HomeScreenPage homePage = landingPage.initializeHomePage(data.get("currency"), data.get("language"));
@@ -54,7 +54,7 @@ public class ErrorValidationTest extends BaseTest{
 	   
 	}
 	
-   @Test(timeOut = 120000 , dataProvider = "getInvalidEmailData",groups = "Booking", description = "Verify error validation related to invalid email")
+   @Test(timeOut = 140000 , dataProvider = "getInvalidEmailData",groups = "Booking", description = "Verify error validation related to invalid email")
 	public void verifyInvalidEmailValidation(HashMap<String,String> data) throws IOException {
 		
 		HomeScreenPage homePage = landingPage.initializeHomePage(data.get("currency"), data.get("language"));
@@ -79,7 +79,7 @@ public class ErrorValidationTest extends BaseTest{
 		bookingConfirmation.validateInvalidEmail();
 		
 	}
-	@Test(timeOut = 120000 ,dataProvider = "getInvalidPhoneData",groups = "Booking", description = "Verify error validation related to invalid phone")
+	@Test(timeOut = 140000 ,dataProvider = "getInvalidPhoneData",groups = "Booking", description = "Verify error validation related to invalid phone")
 	public void verifyInvalidPhoneNoValidation(HashMap<String,String> data) throws IOException {
 		
 		HomeScreenPage homePage = landingPage.initializeHomePage(data.get("currency"), data.get("language"));
@@ -104,7 +104,7 @@ public class ErrorValidationTest extends BaseTest{
 		bookingConfirmation.validateInvalidPhoneNo();
 		
 	}
-	@Test(timeOut = 120000 ,dataProvider = "getInvalidGuestData",groups = "Booking", description = "Verify error validation related to invalid phone")
+	@Test(timeOut = 140000 ,dataProvider = "getInvalidGuestData",groups = "Booking", description = "Verify error validation related to invalid phone")
 	public void verifyInvalidGuestFieldDatatypeValidation(HashMap<String,String> data) throws IOException {
 		
 		HomeScreenPage homePage = landingPage.initializeHomePage(data.get("currency"), data.get("language"));

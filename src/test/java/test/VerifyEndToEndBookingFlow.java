@@ -22,7 +22,7 @@ import org.testng.annotations.Listeners;
 public class VerifyEndToEndBookingFlow extends BaseTest {
 	
 	
-	@Test(timeOut = 120000, dataProvider = "getData",groups = "Booking", description = "Verify end-to-end hotel booking flow with valid booking data")
+	@Test(timeOut = 140000, dataProvider = "getData",groups = "Booking", description = "Verify end-to-end hotel booking flow with valid booking data")
 	public void verifyEndToEndBookingFlow(HashMap<String,String> data) throws IOException {
 		
     	

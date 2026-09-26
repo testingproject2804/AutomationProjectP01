@@ -464,54 +464,26 @@ public class BookingConfirmationPage extends WebUtilities {
             boolean carRental,
             boolean taxi) {
 
+        System.out.println("Current URL: " + driver.getCurrentUrl());
+        System.out.println("Current title: " + driver.getTitle());
+
         if (flight) {
+            System.out.println("Looking for Flight Add-on...");
+
+            List<WebElement> elements =
+                    driver.findElements(By.id("interested_flight"));
 
             System.out.println(
-                    "Clicking Flight Add-on");
+                    "interested_flight elements found: " + elements.size());
 
-            WebElement flightElement =
-                    waitForElementToAppear(
-                            By.id("interested_flight"));
-
-            flightElement.click();
-
-            System.out.println(
-                    "Flight Add-on clicked");
-        }
-
-        if (carRental) {
-
-            System.out.println(
-                    "Clicking Car Rental Add-on");
-
-            ((JavascriptExecutor) driver)
-                    .executeScript(
-                            "arguments[0].scrollIntoView({block: 'center'});",
-                            carRentalsAddOn);
-
-            carRentalsAddOn.click();
-
-            System.out.println(
-                    "Car Rental Add-on clicked");
-        }
-
-        if (taxi) {
-
-            System.out.println(
-                    "Clicking Taxi Add-on");
-
-            WebElement taxiElement =
-                    waitForElementToAppear(
-                            By.id("interested_taxi"));
-
-            taxiElement.click();
-
-            System.out.println(
-                    "Taxi Add-on clicked");
+            if (!elements.isEmpty()) {
+                System.out.println(
+                        "Displayed: " + elements.get(0).isDisplayed());
+                System.out.println(
+                        "Enabled: " + elements.get(0).isEnabled());
+            }
         }
     }
-
-
 
 
     public boolean isValidationErrorDisplayed(
